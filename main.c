@@ -6,7 +6,7 @@ typedef struct CString
 {
 	int len;
 	const char* content;
-} String;
+} CString;
 
 
 unsigned int get_char_length(const char* str) {
@@ -17,12 +17,12 @@ unsigned int get_char_length(const char* str) {
 }
 
 
-String* cstring_new(const char* str)
+CString* cstring_new(const char* str)
 {
 	int len = get_char_length(str);
 
 
-	String res;
+	CString res;
 	res.len = len;
 	res.content = malloc(sizeof(char));
 	strcpy(res.content, str);
@@ -31,17 +31,17 @@ String* cstring_new(const char* str)
 }
 
 
-int cstring_get_len(String* str1) {
+int cstring_get_len(CString* str1) {
 	return str1->len;
 }
 
 
-char cstring_get_char_at_index(String* str2, int i) {
+char cstring_get_char_at_index(CString* str2, int i) {
 	return str2->len > i ? str2->content[i] : '0';
 }
 
 
-String* cstring_set_char_at_index(String* str3, char symbol, int index) {
+void cstring_set_char_at_index(CString* str3, char symbol, int index) {
 	char* local_content = str3->content;
 	local_content[index] = symbol;
 
@@ -49,7 +49,7 @@ String* cstring_set_char_at_index(String* str3, char symbol, int index) {
 }
 
 
-const char* cstring_get_content(String* str4) {
+const char* cstring_get_content(CString* str4) {
 	return str4->content;
 }
 
@@ -67,7 +67,7 @@ int main(void) {
 	int asserted_len;
 	char asserted_char;
 
-	const String string = *cstring_new("Dio Brando");
+	const CString string = *cstring_new("Dio Brando");
 
 
 
